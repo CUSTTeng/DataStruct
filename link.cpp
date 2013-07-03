@@ -1,4 +1,14 @@
-/* é“¾è¡¨ */
+/**********************************************
+ÎÄ¼şÃû³Æ:  link.cpp
+ÄÚÈİÕªÒª:  Á´±í´¦Àí
+µ±Ç°°æ±¾:  ÎŞ
+
+×÷Õß		:  ÇØÌÎ
+´´½¨ÈÕÆÚ:  2013.6.18
+ĞŞ¸ÄÈÕÆÚ:  2013.7.2
+ĞŞ¸Ä¼ÇÂ¼:  ÖØĞ´ÁËÁ´±í´¦Àí³ÌĞò
+***********************************************/
+
 
 #include "public.h"
 #ifdef  LINK
@@ -6,14 +16,16 @@
 #include<malloc.h>
 #include<stdlib.h>
 
+
+/*
 typedef struct LNote
 {
-  int data;
+	int data;
 	struct LNote *next;
 }LNote,*LinkList;
 
 
-int Length_link(LinkList Head)						//é“¾è¡¨é•¿åº¦è®¡ç®—
+int Length_link(LinkList Head)						//Á´±í³¤¶È¼ÆËã
 {
 	int length = 0;
 	LinkList L = Head;
@@ -25,11 +37,11 @@ int Length_link(LinkList Head)						//é“¾è¡¨é•¿åº¦è®¡ç®—
 	return length;
 }
 
-LinkList Create_Link(LinkList Head,int n)				//é“¾è¡¨åˆå§‹åŒ–
+LinkList Create_Link(LinkList Head,int n)				//Á´±í³õÊ¼»¯
 {
 	if(n<0)
 	{
-		printf("éæ³•é•¿åº¦\n");
+		printf("·Ç·¨³¤¶È\n");
 		exit;
 	}
 	int value;
@@ -41,9 +53,9 @@ LinkList Create_Link(LinkList Head,int n)				//é“¾è¡¨åˆå§‹åŒ–
 		LinkList New = (LinkList)malloc(sizeof(LNote));
 		if(NULL==New)
 		{
-			printf("åˆ†é…å†…å­˜å¤±è´¥\n");
+			printf("·ÖÅäÄÚ´æÊ§°Ü\n");
 		}
-		printf("è¯·è¾“å…¥å‚æ•°\n");
+		printf("ÇëÊäÈë²ÎÊı\n");
 		scanf("%d",&value);
 		New->data = value;
 		End->next = New;
@@ -54,11 +66,11 @@ LinkList Create_Link(LinkList Head,int n)				//é“¾è¡¨åˆå§‹åŒ–
 }
 
 
-int Insert_Link(LinkList Head,int n,int e)					//é“¾è¡¨æ’å…¥å…ƒç´ 
+int Insert_Link(LinkList Head,int n,int e)					//Á´±í²åÈëÔªËØ
 {
 	if(n<1||n>Length_link(Head)+1)
 	{
-		printf("è¶…è¿‡èŒƒå›´\n");
+		printf("³¬¹ı·¶Î§\n");
 		return 0;
 	}
 	LinkList q = Head;
@@ -69,7 +81,7 @@ int Insert_Link(LinkList Head,int n,int e)					//é“¾è¡¨æ’å…¥å…ƒç´ 
 	LinkList p = (LinkList)malloc(sizeof(LNote));
 	if(NULL==p)
 	{
-		printf("åˆ†é…å†…å­˜å¤±è´¥\n");
+		printf("·ÖÅäÄÚ´æÊ§°Ü\n");
 	}
 	
 	p->data = e;
@@ -78,11 +90,11 @@ int Insert_Link(LinkList Head,int n,int e)					//é“¾è¡¨æ’å…¥å…ƒç´ 
 	return 0;
 }
 
-int Delete_Link(LinkList Head,int n,int &e)						//é“¾è¡¨åˆ é™¤å…ƒç´ 
+int Delete_Link(LinkList Head,int n,int &e)						//Á´±íÉ¾³ıÔªËØ
 {
 	if(n<1||n>Length_link(Head))
 	{
-		printf("è¶…è¿‡èŒƒå›´\n");
+		printf("³¬¹ı·¶Î§\n");
 		return 0;
 	}
 	LinkList q = Head;
@@ -111,7 +123,7 @@ int LocateElem(LinkList Head,int e)
 	return locate;
 }
 
-void Merge_Link(LinkList La,LinkList Lb,LinkList Lc)				//é¡ºåºé“¾è¡¨åˆå¹¶
+void Merge_Link(LinkList La,LinkList Lb,LinkList Lc)				//Ë³ĞòÁ´±íºÏ²¢
 {
 	int i = 1;
 	LinkList a = La->next;
@@ -148,18 +160,21 @@ void Merge_Link(LinkList La,LinkList Lb,LinkList Lc)				//é¡ºåºé“¾è¡¨åˆå¹¶
 		i++;
 	}
 }
+*/
+
+
 
 
 /***************************************** 
-  å‡½æ•°åç§°:  void Swap(int *a,int *b) 
-  åŠŸèƒ½æè¿°:  æ•°æ®äº¤æ¢
-  è¾“å…¥å‚æ•°:  int *a --æ•°æ®1
-                             int * b --æ•°æ®2
-  è¾“å‡ºå‚æ•°:  æ— 
-  è¿”å›å€¼	  :  æ— 
+  º¯ÊıÃû³Æ:  void Swap(int *a,int *b) 
+  ¹¦ÄÜÃèÊö:  Êı¾İ½»»»
+  ÊäÈë²ÎÊı:  int *a --Êı¾İ1
+                             int * b --Êı¾İ2
+  Êä³ö²ÎÊı:  ÎŞ
+  ·µ»ØÖµ	  :  ÎŞ
   
-  ä¿®æ”¹æ—¥æœŸ:  2013.6.18
-  ä¿®æ”¹äºº	  :  QT
+  ĞŞ¸ÄÈÕÆÚ:  2013.6.18
+  ĞŞ¸ÄÈË	  :  QT
 *****************************************/
 void Swap(int *a,int *b)
 {
@@ -171,22 +186,211 @@ void Swap(int *a,int *b)
 
 
 /***************************************** 
-  å‡½æ•°åç§°:  void Sort_Link(LinkList Head) 
-  åŠŸèƒ½æè¿°:  é“¾è¡¨æ’åº
-  è¾“å…¥å‚æ•°:  LinkList Head --é“¾è¡¨å¤´æŒ‡é’ˆ
-  è¾“å‡ºå‚æ•°:  æ— 
-  è¿”å›å€¼	  :  æ— 
+  º¯ÊıÃû³Æ:  void Sort_Link(LinkList Head) 
+  ¹¦ÄÜÃèÊö:  Á´±íÅÅĞò
+  ÊäÈë²ÎÊı:  LinkList Head --Á´±íÍ·Ö¸Õë
+  Êä³ö²ÎÊı:  ÎŞ
+  ·µ»ØÖµ	  :  ÎŞ
   
-  ä¿®æ”¹æ—¥æœŸ:  2013.6.18
-  ä¿®æ”¹äºº	  :  QT
+  ĞŞ¸ÄÈÕÆÚ:  2013.6.18
+  ĞŞ¸ÄÈË	  :  QT
 *****************************************/
-void Sort_Link(LinkList Head)
+//void Sort_Link(pNote L)
+//{
+//	int n = 0;
+//	n = LengthLink(L);
+//	pNote p = NULL;
+//	for(p = L->next;p->next!=NULL;p = p->next)
+//		for(pNote q = p->next;q!=NULL;q = q->next)
+//		{
+//			if((p->data)>(q->data)) 
+//				Swap(&p->data,&q->data);
+//			
+//		}
+//}
+
+
+//void print(LinkList Head)									//´òÓ¡Á´±í
+//{
+//	LinkList L = Head->next;
+//	while(NULL!=L)
+//	{
+//		printf("%d ",L->data);
+//		L = L->next;
+//	}
+//	printf("\n");
+//}
+
+
+
+
+
+typedef int ElemType;
+
+typedef struct note
+{
+	ElemType data;
+	struct note *next;
+}Note,*pNote;
+
+pNote CreateLink(pNote L);
+void InsertLink(pNote L,int n,ElemType e);
+void DeleteLink(pNote L,int n,ElemType *e);
+int LengthLink(pNote L);
+void Traverse(pNote L);
+
+
+/***************************************** 
+  º¯ÊıÃû³Æ:  pNote CreateLink(pNote L)
+  ¹¦ÄÜÃèÊö:  Á´±í³õÊ¼»¯
+  ÊäÈë²ÎÊı:  pNote L -- Á´±íÍ·Ö¸Õë
+  Êä³ö²ÎÊı:  ÎŞ
+  ·µ»ØÖµ	  :  ÎŞ
+  
+  ĞŞ¸ÄÈÕÆÚ:  2013.7.1
+  ĞŞ¸ÄÈË	  :  ÇØÌÎ
+*****************************************/
+
+pNote CreateLink(pNote L)
 {
 	int n = 0;
-	n = Length_link(Head);
-	LinkList p = NULL;
-	for(p = Head->next;p->next!=NULL;p = p->next)
-		for(LinkList q = p->next;q!=NULL;q = q->next)
+	int i = 0;
+
+	L = (pNote)malloc(sizeof(Note));
+	if(NULL==L) return (pNote)1;
+	pNote head = L;
+	
+	printf("Enter length\n");
+	scanf("%d",&n);
+
+	for(i=0;i<n;i++)
+	{
+		pNote p = (pNote)malloc(sizeof(Note));
+		if(NULL==p) return (pNote)1;
+		printf("Enter data\n");
+		scanf("%d",&p->data);
+		p->next = NULL;
+		head->next = p;
+		head = p;
+	}
+	
+	return L;
+
+}
+
+
+/***************************************** 
+  º¯ÊıÃû³Æ:  void InsertLink(pNote L,int n,ElemType *e)
+  ¹¦ÄÜÃèÊö:  Á´±íÔªËØ²åÈë
+  ÊäÈë²ÎÊı:  pNote L -- Á´±íÍ·Ö¸Õë
+  			      int n -- É¾³ıÔªËØÎ»ÖÃ
+  			      ElemType *e -- É¾³ıÔªËØÖµ
+  Êä³ö²ÎÊı:  ÎŞ
+  ·µ»ØÖµ	  :  ÎŞ
+  
+  ĞŞ¸ÄÈÕÆÚ:  2013.7.1
+  ĞŞ¸ÄÈË	  :  ÇØÌÎ
+*****************************************/
+void InsertLink(pNote L,int n,ElemType e)
+{
+	pNote p = L;
+	if(n<1||n>(LengthLink(L)+1))
+		printf("Enter error\n");
+	while(1!=n)
+	{
+		p = p->next;
+		n--;
+	}
+	pNote q = (pNote)malloc(sizeof(Note));
+	if(NULL==q)
+	{
+		printf("Request error\n");
+		return;
+	}
+	q->data = e;
+	q->next = p->next;
+	p->next = q;
+
+
+}
+
+
+
+/***************************************** 
+  º¯ÊıÃû³Æ:  void DeleteLink(pNote L,int n,ElemType *e)
+  ¹¦ÄÜÃèÊö:  Á´±íÔªËØÉ¾³ı
+  ÊäÈë²ÎÊı:  pNote L -- Á´±íÍ·Ö¸Õë
+  			      int n -- É¾³ıÔªËØÎ»ÖÃ
+  Êä³ö²ÎÊı:   ElemType *e -- É¾³ıÔªËØÖµ
+  ·µ»ØÖµ	  :  ÎŞ
+  
+  ĞŞ¸ÄÈÕÆÚ:  2013.7.1
+  ĞŞ¸ÄÈË	  :  ÇØÌÎ
+*****************************************/
+
+void DeleteLink(pNote L,int n,ElemType *e)
+{
+	pNote p = L;
+	if(n<1||n>LengthLink(L))
+		printf("Enter error\n");
+	while(1!=n)
+	{
+		p = p->next;
+		n--;
+	}
+	pNote q = p->next;
+	p->next = p->next->next;
+	*e = q->data;
+	free(q);
+	q = NULL;
+
+}
+
+/***************************************** 
+  º¯ÊıÃû³Æ:  int LengthLink(pNote L)
+  ¹¦ÄÜÃèÊö:  ¼ÆËãÁ´±í³¤¶È
+  ÊäÈë²ÎÊı:  pNote L -- Á´±íÍ·Ö¸Õë
+  Êä³ö²ÎÊı:  ÎŞ
+  ·µ»ØÖµ	  :  Á´±í³¤¶È
+  
+  ĞŞ¸ÄÈÕÆÚ:  2013.7.1
+  ĞŞ¸ÄÈË	  :  ÇØÌÎ
+*****************************************/
+
+
+int LengthLink(pNote L)
+{
+	int n = 0;
+	pNote p = L;
+	while(NULL!=p->next)
+	{
+		p = p->next;
+		n++;
+	}
+	return n;
+
+
+
+
+}
+
+/***************************************** 
+  º¯ÊıÃû³Æ:  void Sort_Link(LinkList Head) 
+  ¹¦ÄÜÃèÊö:  Á´±íÅÅĞò
+  ÊäÈë²ÎÊı:  LinkList Head --Á´±íÍ·Ö¸Õë
+  Êä³ö²ÎÊı:  ÎŞ
+  ·µ»ØÖµ	  :  ÎŞ
+  
+  ĞŞ¸ÄÈÕÆÚ:  2013.6.18
+  ĞŞ¸ÄÈË	  :  QT
+*****************************************/
+void SortLink(pNote L)
+{
+	int n = 0;
+	n = LengthLink(L);
+	pNote p = NULL;
+	for(p = L->next;p->next!=NULL;p = p->next)
+		for(pNote q = p->next;q!=NULL;q = q->next)
 		{
 			if((p->data)>(q->data)) 
 				Swap(&p->data,&q->data);
@@ -195,15 +399,27 @@ void Sort_Link(LinkList Head)
 }
 
 
-void print(LinkList Head)									//æ‰“å°é“¾è¡¨
+
+
+
+/***************************************** 
+  º¯ÊıÃû³Æ:  void Traverse(pNote L)
+  ¹¦ÄÜÃèÊö:  ±éÀúÊä³öÁ´±í
+  ÊäÈë²ÎÊı:  pNote L -- Á´±íÍ·Ö¸Õë
+  Êä³ö²ÎÊı:  ÎŞ
+  ·µ»ØÖµ	  :  Á´±í³¤¶È
+  
+  ĞŞ¸ÄÈÕÆÚ:  2013.7.1
+  ĞŞ¸ÄÈË	  :  ÇØÌÎ
+*****************************************/
+void Traverse(pNote L)
 {
-	LinkList L = Head->next;
-	while(NULL!=L)
+	pNote p = L;
+	while(NULL!=p->next)
 	{
-		printf("%d ",L->data);
-		L = L->next;
+		printf("%d\n",p->next->data);
+		p = p->next;
 	}
-	printf("\n");
 }
 
 
@@ -211,49 +427,16 @@ void print(LinkList Head)									//æ‰“å°é“¾è¡¨
 
 void main()
 {
-	LinkList La,Lb,Lc;
-	int n;
-	int e;
-	int locate;
-	printf("è¾“å…¥åˆå§‹åŒ–é•¿åº¦\n");
-	scanf("%d",&n);
-	La = Create_Link(La,n);
+	int e = 0;
+	int n = 0;
+	pNote L = NULL;
+	L= CreateLink(L);
+	Traverse(L);
 
-	Sort_Link(La);
-	print(La);
+	printf("\n\n");
 
-	
-
-//	printf("%d\n",n);
-
-//	printf("è¾“å…¥åˆå§‹åŒ–é•¿åº¦\n");
-//	scanf("%d",&n);
-//	Lb = Create_Link(Lb,n);
-
-	
-
-	
-//	Lc = Create_Link(Lc,0);
-//	print(La);
-//	print(Lb);
-//	print(Lc);
-//	Merge_Link(La,Lb,Lc);
-//	print(Lc);
-//	print(La);
-//	print(La);
-
-//	printf("é“¾è¡¨é•¿åº¦%d\n",Length_link(La));
-//	Insert_Link(La,6,10);
-//	print(La);
-//	printf("é“¾è¡¨é•¿åº¦%d\n",Length_link(La));
-//	Delete_Link(La,6,e);
-//	print(La);
-//	printf("é“¾è¡¨é•¿åº¦%d\n",Length_link(La));
-//	printf("%d\n",e);	
-//	locate = LocateElem(La,1);
-//	printf("%d\n",locate);
-		
-	
+	SortLink(L);
+	Traverse(L);
 }
 
 #endif

@@ -1,5 +1,5 @@
 /*
-çº¿æ€§è¡¨
+ÏßĞÔ±í
 
 */
 #include "public.h"
@@ -21,17 +21,17 @@
 
 typedef struct
 {
-    int  *elem;			//å­˜å‚¨ç©ºé—´åŸºå€
-	int length;			//å½“å‰é•¿åº¦
-	int listsize;			//å½“å‰åˆ†é…çš„å­˜å‚¨å®¹é‡
+	int  *elem;			//´æ´¢¿Õ¼ä»ùÖ·
+	int length;			//µ±Ç°³¤¶È
+	int listsize;			//µ±Ç°·ÖÅäµÄ´æ´¢ÈİÁ¿
 }SqList;
 	
-int Init_List(SqList &L)			//çº¿æ€§è¡¨åˆå§‹åŒ–
+int Init_List(SqList &L)			//ÏßĞÔ±í³õÊ¼»¯
 {
 	L.elem = (int *)malloc(LIST_INIT_SIZE*sizeof(int));
 	if(!L.elem) 
 	{
-		printf("åˆå§‹åŒ–å†…å­˜å¤±è´¥\n");
+		printf("³õÊ¼»¯ÄÚ´æÊ§°Ü\n");
 		return ERROR;
 	}
 	L.length = 0;
@@ -39,18 +39,18 @@ int Init_List(SqList &L)			//çº¿æ€§è¡¨åˆå§‹åŒ–
 	return OK;
 }
 
-int Insert_List(SqList &L,int i,int e)				//åœ¨çº¿æ€§è¡¨æŒ‡å®šä½ç½®æ’å…¥å…ƒç´ 
+int Insert_List(SqList &L,int i,int e)				//ÔÚÏßĞÔ±íÖ¸¶¨Î»ÖÃ²åÈëÔªËØ
 {
 
 	if(i<1||i>L.length+1) 
 	{
-		printf("æ’å…¥ä½ç½®è¶…é™\n");
+		printf("²åÈëÎ»ÖÃ³¬ÏŞ\n");
 		return ERROR;
 	}
 	if(L.length>=L.listsize)
 	{
 		int *newbase = (int *)realloc(L.elem,LIST_INIT_SIZE+LISTINCREMENT);
-		if(!newbase) printf("åˆå§‹åŒ–å†…å­˜å¤±è´¥\n");	
+		if(!newbase) printf("³õÊ¼»¯ÄÚ´æÊ§°Ü\n");	
 		L.elem = newbase;
 		L.listsize += LISTINCREMENT;
 	}
@@ -66,11 +66,11 @@ int Insert_List(SqList &L,int i,int e)				//åœ¨çº¿æ€§è¡¨æŒ‡å®šä½ç½®æ’å…¥å…ƒç´ 
 	return OK;
 }
 
-int Delete_List(SqList &L,int i,int &e)			//åœ¨çº¿æ€§è¡¨æŒ‡å®šä½ç½®åˆ é™¤å…ƒç´ 
+int Delete_List(SqList &L,int i,int &e)			//ÔÚÏßĞÔ±íÖ¸¶¨Î»ÖÃÉ¾³ıÔªËØ
 {
 	if(i<1||i>L.length)
 	{
-		printf("åˆ é™¤ä½ç½®è¶…é™\n");
+		printf("É¾³ıÎ»ÖÃ³¬ÏŞ\n");
 		return ERROR;
 	}
 
@@ -84,7 +84,7 @@ int Delete_List(SqList &L,int i,int &e)			//åœ¨çº¿æ€§è¡¨æŒ‡å®šä½ç½®åˆ é™¤å…ƒç´ 
 	return OK;
 }
 
-int Locate_List(SqList &L,int &e)			//åœ¨çº¿æ€§è¡¨ä¸­æ‰¾åˆ°æŒ‡å®šå…ƒç´ 
+int Locate_List(SqList &L,int &e)			//ÔÚÏßĞÔ±íÖĞÕÒµ½Ö¸¶¨ÔªËØ
 {
 	int i;
 	for(i=1;i<=L.length;i++)
@@ -96,12 +96,12 @@ int Locate_List(SqList &L,int &e)			//åœ¨çº¿æ€§è¡¨ä¸­æ‰¾åˆ°æŒ‡å®šå…ƒç´ 
 	}
 	if(i==L.length+1)
 	{
-		printf("æ— è¯¥æ•°æ®\n");
+		printf("ÎŞ¸ÃÊı¾İ\n");
 		return ERROR;
 	}
 }
 
-void  Destroy_List(SqList &L)			//é”€æ¯çº¿æ€§è¡¨
+void  Destroy_List(SqList &L)			//Ïú»ÙÏßĞÔ±í
 {
 	free(L.elem);
 	L.elem = NULL;
@@ -109,13 +109,13 @@ void  Destroy_List(SqList &L)			//é”€æ¯çº¿æ€§è¡¨
 	L.listsize = 0;
 }
 
-void Clear_List(SqList &L)			//æ¸…é™¤çº¿æ€§è¡¨ä¸­çš„å…ƒç´ 
+void Clear_List(SqList &L)			//Çå³ıÏßĞÔ±íÖĞµÄÔªËØ
 {
 	L.length = 0;
 }
 
 
-void Insert_Sq(SqList &L,int &x)			//å°†ä¸€ä¸ªå…ƒç´ æ’å…¥é¡ºåºè¡¨
+void Insert_Sq(SqList &L,int &x)			//½«Ò»¸öÔªËØ²åÈëË³Ğò±í
 {
 	for(int j=1;j<=L.length;j++)
 	{
@@ -143,7 +143,7 @@ void Merge_List(SqList La,SqList Lb,SqList &Lc)
 	pc = Lc.elem = (int *)malloc(sizeof(int)*Lc.listsize);
 	if(!Lc.elem)
 	{
-		printf("åˆå§‹åŒ–å†…å­˜å¤±è´¥\n");
+		printf("³õÊ¼»¯ÄÚ´æÊ§°Ü\n");
 	}
 	pa_last = &La.elem[La.length-1];
 	pb_last = &Lb.elem[Lb.length-1];
@@ -165,7 +165,7 @@ void Merge_List(SqList La,SqList Lb,SqList &Lc)
 
 
 
-int print(SqList &L)			//æ‰“å°å‡½æ•°
+int print(SqList &L)			//´òÓ¡º¯Êı
 {
 	for(int i=0;i<L.length;i++)
 	{
@@ -178,7 +178,7 @@ int print(SqList &L)			//æ‰“å°å‡½æ•°
 int main()
 {
 	SqList La,Lb,Lc;			
-	Init_List(La);			//åˆå§‹åŒ–çº¿æ€§è¡¨
+	Init_List(La);			//³õÊ¼»¯ÏßĞÔ±í
 	Init_List(Lb);
 	for(int i=1;i<=5;i++)
 	{

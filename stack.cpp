@@ -1,20 +1,29 @@
-/* æ ˆ */
+/**********************************************
+ÎÄ¼şÃû³Æ:  stack.cpp
+ÄÚÈİÕªÒª:  Õ»´¦Àí
+µ±Ç°°æ±¾:  ÎŞ
+
+×÷Õß		:  ÇØÌÎ
+´´½¨ÈÕÆÚ:  2013.6.18
+ĞŞ¸ÄÈÕÆÚ:  2013.6.29
+ĞŞ¸Ä¼ÇÂ¼:  ÖØĞ´ÁËÕ»´¦Àí³ÌĞò
+***********************************************/
+
+
 #include "public.h"
 #ifdef  STACK
 
 #include<stdio.h>
 #include<string.h>
-#include<stdlib.h>
+//#include<stdlib.h>
 
-#include<iostream>
-using namespace std;
-
-#define Stack_Init_Size 100  	//å †æ ˆåˆå§‹åŒ–é•¿åº¦
-#define Stack_Increment 10		//å †æ ˆå†æ¬¡å¢åŠ é•¿åº¦
+/*
+#define Stack_Init_Size 100		//¶ÑÕ»³õÊ¼»¯³¤¶È
+#define Stack_Increment 10		//¶ÑÕ»ÔÙ´ÎÔö¼Ó³¤¶È
 typedef char ElemType;
 
 
-typedef struct					//å †æ ˆç»“æ„
+typedef struct					//¶ÑÕ»½á¹¹
 {
 	ElemType *base;
 	ElemType *top;
@@ -22,26 +31,26 @@ typedef struct					//å †æ ˆç»“æ„
 }Stack;
 
 
-void InitStack(Stack &S)									//åˆå§‹åŒ–æ ˆ
+void InitStack(Stack &S)									//³õÊ¼»¯Õ»
 {
 	S.base = (ElemType *)malloc(Stack_Init_Size*sizeof(ElemType));
 	if(NULL==S.base)
 	{
-		printf("åˆå§‹åŒ–å¤±è´¥\n");
+		printf("³õÊ¼»¯Ê§°Ü\n");
 		exit;
 	}
 	S.top = S.base;
 	S.stacksize = Stack_Init_Size;
 }
 
-void Push(Stack &S,ElemType e)								//å‹æ ˆ
+void Push(Stack &S,ElemType e)								//Ñ¹Õ»
 {
 	if((S.top-S.base)>=S.stacksize)
 	{
 		S.base = (ElemType *)realloc(S.base,(S.stacksize+Stack_Increment)*sizeof(ElemType));
 		if(NULL==S.base)
 		{
-			printf("åˆå§‹åŒ–å¤±è´¥\n");
+			printf("³õÊ¼»¯Ê§°Ü\n");
 			exit;
 		}
 		S.top = S.base+S.stacksize;
@@ -50,18 +59,18 @@ void Push(Stack &S,ElemType e)								//å‹æ ˆ
 	*(S.top)++ = e;
 }
 
-void Pop(Stack &S,ElemType &e)								//å‡ºæ ˆ
+void Pop(Stack &S,ElemType &e)								//³öÕ»
 {
 	if(S.top==S.base)
 	{
-		printf("æ ˆç©º\n");
+		printf("Õ»¿Õ\n");
 		exit;
 	}
 	e = *(--S.top);
 
 }
 
-int Length_Stack(Stack &S)								//å †æ ˆé•¿åº¦
+int Length_Stack(Stack &S)								//¶ÑÕ»³¤¶È
 {
 	return S.top-S.base;
 }
@@ -78,7 +87,7 @@ void print(Stack S)
 
 }
 
-void  Conversion()									//è¿›åˆ¶è½¬æ¢
+void  Conversion()									//½øÖÆ×ª»»
 {
 	Stack S;
 	InitStack(S);
@@ -108,12 +117,12 @@ int  Match(char *p,Stack S)
 	return 0;
 }
 
-void Pair()												//å­—ç¬¦åŒ¹é…
+void Pair()												//×Ö·ûÆ¥Åä
 {
 	Stack S;
 	InitStack(S);
 	char string[100];
-	printf("è¯·è¾“å…¥ä»»æ„å­—ç¬¦ä¸²\n");
+	printf("ÇëÊäÈëÈÎÒâ×Ö·û´®\n");
 	gets(string);
 	char *p = string;
 	int flag = 0;
@@ -139,9 +148,9 @@ void Pair()												//å­—ç¬¦åŒ¹é…
 		p++;
 	}
 	if(0==Length_Stack(S)&&flag)
-		printf("æ‹¬å·åŒ¹é…\n");
+		printf("À¨ºÅÆ¥Åä\n");
 	else
-		printf("æ‹¬å·ä¸åŒ¹é…\n");
+		printf("À¨ºÅ²»Æ¥Åä\n");
 }
 
 int  Fib(int n)
@@ -154,18 +163,88 @@ int  Fib(int n)
 }
 
 
+*/
+
+
+typedef int ElemType;
+#define ElemType int
+
+typedef struct note
+{
+	ElemType data;
+	struct note *next;
+}Note,*pNote;
+
+typedef struct stack 
+{
+	pNote top;
+	pNote bottom;
+}Stack;
+
+
+void InitStack(Stack *S)
+{
+	S->top = (pNote)malloc(sizeof(Note));
+	if(NULL==S->top) return;
+	S->top->next = NULL;
+	S->bottom = S->top;
+}
+
+
+void Push(Stack *S,ElemType e)
+{
+	pNote p = (pNote)malloc(sizeof(Note));
+	if(NULL==p) return;
+	p->data = e;
+
+	p->next = S->top;
+	S->top = p;
+}
+
+
+void Pop(Stack *S,ElemType *e)
+{
+	if(S->top!=S->bottom)
+	{
+		*e = S->top->data;
+		S->top = S->top->next;
+	}
+}
+
+
+
+void Traverse(Stack S)
+{
+	pNote p = S.top;
+	while(p != S.bottom)
+	{
+		printf("%d\n",p->data);
+		p = p->next;
+	}
+}
+
 
 
 void main()
 {
-	int a = 1;
-	int b = 2;
-	int c;
-	c = (a = b+1);
-	printf("%d\n",c);
+	ElemType e;
+	Stack S;
+	InitStack(&S);
+	e = 1;
+	Push(&S,e);
+	Push(&S,2);
+	Push(&S,3);
+	Push(&S,4);
+	Push(&S,5);
+	Traverse(S);
 
-
-
+	Pop(&S,&e);
+	printf("%d\n",e);
+	Pop(&S,&e);
+	printf("%d\n",e);
+	Pop(&S,&e);
+	printf("%d\n",e);
+	Traverse(S);
 }
 
 #endif
