@@ -182,6 +182,17 @@ typedef struct stack
 }Stack;
 
 
+
+/***************************************** 
+  函数名称:  void InitStack(Stack *S)
+  功能描述:  栈初始化
+  输入参数:  Stack *S -- 栈指针
+  输出参数:  无
+  返回值	  :  无
+  
+  修改日期:  2013.7.3
+  修改人	  :  秦涛
+*****************************************/
 void InitStack(Stack *S)
 {
 	S->top = (pNote)malloc(sizeof(Note));
@@ -190,6 +201,19 @@ void InitStack(Stack *S)
 	S->bottom = S->top;
 }
 
+
+
+/***************************************** 
+  函数名称:  void Push(Stack *S,ElemType e)
+  功能描述:  入栈操作
+  输入参数:  Stack *S -- 栈指针
+  			     ElemType e --入栈 元素 
+  输出参数:  无
+  返回值	  :  无
+  
+  修改日期:  2013.7.3
+  修改人	  :  秦涛
+*****************************************/
 
 void Push(Stack *S,ElemType e)
 {
@@ -201,6 +225,17 @@ void Push(Stack *S,ElemType e)
 	S->top = p;
 }
 
+/***************************************** 
+  函数名称:  void Pop(Stack *S,ElemType *e)
+  功能描述:  出栈操作
+  输入参数:  Stack *S -- 栈指针
+  			     ElemType e --出栈 元素 
+  输出参数:  无
+  返回值	  :  无
+  
+  修改日期:  2013.7.3
+  修改人	  :  秦涛
+*****************************************/
 
 void Pop(Stack *S,ElemType *e)
 {
@@ -212,6 +247,16 @@ void Pop(Stack *S,ElemType *e)
 }
 
 
+/***************************************** 
+  函数名称:  void Traverse(Stack S)
+  功能描述:  栈遍历输出
+  输入参数:  Stack S -- 栈指针
+  输出参数:  无
+  返回值	  :  无
+  
+  修改日期:  2013.7.3
+  修改人	  :  秦涛
+*****************************************/
 
 void Traverse(Stack S)
 {
