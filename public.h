@@ -14,9 +14,9 @@
 //#define LINK						//链表
 //#define STACK					//堆栈
 //#define QUEUE					//队列
-#define TREE						//二叉树
+//#define TREE						//二叉树
 //#define TEST						//测试
-
+#define SORT						//排序
 
 #endif
 

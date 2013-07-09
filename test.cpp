@@ -2,7 +2,7 @@
 #ifdef TEST
 #include<stdio.h>
 #include<stdlib.h>
-
+#include<time.h>
 void test(int **p)
 {
 	*p = NULL;
@@ -11,11 +11,13 @@ void test(int **p)
 
 int main(void)
 {
-	int *p =(int *)malloc(sizeof(int));
-
-	test(&p);
-	printf("%d\n",p);
+	srand(time(NULL));
 	
+	for(int i=0;i<10;i++)
+		printf("%d\n",rand()%100);
+	
+
+	printf("%");
 	return 0;
 }
 
