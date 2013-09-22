@@ -15,8 +15,8 @@
 //#define STACK					//∂—’ª
 //#define QUEUE					//∂”¡–
 //#define TREE						//∂˛≤Ê ˜
-//#define TEST						//≤‚ ‘
-#define SORT						//≈≈–Ú
+#define TEST						//≤‚ ‘
+//#define SORT						//≈≈–Ú
 
 #endif
 

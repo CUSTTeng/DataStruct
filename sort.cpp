@@ -7,7 +7,7 @@
 创建日期:  2013.7.3
 修改日期:  2013.7.8
 ***********************************************/
-#include<public.h>
+#include"public.h"
 
 #ifdef SORT 
 
@@ -16,7 +16,7 @@
 #include<time.h>
 
 typedef int ElemType;
-#define NUMBER 100
+#define NUMBER 100000
 
 
 /***************************************** 
@@ -101,7 +101,8 @@ void BubbleSort(ElemType *e,int n)
 	for(int i=0;i<n;i++)
 		for(int j=i+1;j<n;j++)
 		{
-			if(*(e+i)>*(e+j)) Swap(e+i, e+j);
+			if(*(e+i)>*(e+j)) 
+				Swap(e+i, e+j);
 		}
 }
 
@@ -151,7 +152,7 @@ void SelectSort(ElemType *e,int n)
 	for(int i=0;i<n;i++)
 	{
 		index = FindMin(e+i,n-i);
-		Swap(e+i,e+index+i);
+		Swap(e+i,e+i+index);
 		
 	}
 
@@ -169,31 +170,24 @@ void SelectSort(ElemType *e,int n)
   修改日期:  2013.7.8
   修改人	  :  秦涛
 *****************************************/
-int Partition(ElemType n[],int left,int right)
+int Partition(ElemType *array,int left,int right)
 {
-	int lo,hi,pivot,t;
-
-	pivot=n[left];
-	lo=left-1;
-	hi=right+1;
-
-	while(lo+1!=hi) 
+	int temp = array[left];
+	while(left<right)
 	{
-		if(n[lo+1]<=pivot) lo++;
-		else if(n[hi-1]>pivot) hi--;
-		else 
-		{
-			t=n[lo+1];
-			n[++lo]=n[hi-1];
-			n[--hi]=t;
-		}
+		while((left<right)&&(array[right]>=temp))
+			right--;
+		if(left<right)
+			array[left++] = array[right];
+
+		while ((left<right)&&(array[left]<=temp))
+			left++;
+		if(left<right)
+			array[right--] = array[left];
 	}
 
-	n[left]=n[lo];
-	n[lo]=pivot;
-	return lo;
-
-
+	array[left] = temp;
+	return left;
 }
 
 
@@ -209,14 +203,14 @@ int Partition(ElemType n[],int left,int right)
   修改日期:  2013.7.8
   修改人	  :  秦涛
 *****************************************/
-void QuickSort(ElemType n[],int left,int right)
+void QuickSort(ElemType *array,int left,int right)
 {
 	int dp;
 	if (left<right) 
 	{
-		dp=Partition(n,left,right);
-     		QuickSort(n,left,dp-1);
-     		QuickSort(n,dp+1,right);
+		dp=Partition(array,left,right);
+		QuickSort(array,left,dp-1);
+		QuickSort(array,dp+1,right);
 	}
 }
 
@@ -227,28 +221,29 @@ int main(void)
 {
 	int n = NUMBER;
 	int randArry1[NUMBER] = {0};
-	int randArry2[NUMBER] = {0};
+	//int randArry2[NUMBER] = {10,9,8,7,6,5,4,3,2,1};
+	int randArry2[7] ={49,38,65,97,76,13,27};
 	clock_t start1,start2,end1,end2;
 	double runTime1 = 0;
 	double runTime2 = 0;
 	
 	RandNumCreat(randArry1,n);
-	RandNumCreat(randArry2,n);
+	//RandNumCreat(randArry2,n);
 
 	//	Traverse(randArry,n);
 	printf("start\n");
 	system("pause");
 
 	start1 = clock();
-	SelectSort(randArry1,n);
+	//BubbleSort(randArry1,n);
 	end1 = clock();
 
 	//Traverse(randArry,n);
-
+	
 	start2 = clock();
-	QuickSort(randArry2,0,n);
+	QuickSort(randArry1,0,NUMBER-1);
 	end2 = clock();
-	Traverse(randArry2,n);
+	//Traverse(randArry1,NUMBER);
 
 	runTime1 = (double)(end1-start1)/CLOCKS_PER_SEC;
 	runTime2 = (double)(end2-start2)/CLOCKS_PER_SEC;
